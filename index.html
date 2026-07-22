@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taqueria by Unterfreunden | Hamburg</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-cream: #FAF5F0;
+            --pink-rose: #E0988E;
+            --pink-light: #F7E7E4;
+            --green-dark: #233327;
+            --green-accent: #2e4434;
+            --text-dark: #1F2E21;
+            --text-light: #FAF5F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER & HERO */
+        header {
+            background-color: var(--green-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 1rem 2.5rem;
+            border-bottom: 4px solid var(--pink-rose);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--pink-rose);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* NAV BUTTONS */
+        .hero-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-pink {
+            background-color: var(--pink-rose);
+            color: var(--green-dark);
+        }
+
+        .btn-pink:hover {
+            background-color: #d48378;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--pink-rose);
+            color: var(--pink-rose);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--pink-rose);
+            color: var(--green-dark);
+        }
+
+        /* UBER EATS BANNER */
+        .ubereats-banner {
+            background-color: var(--pink-rose);
+            color: var(--green-dark);
+            text-align: center;
+            padding: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .ubereats-badge {
+            background-color: var(--green-dark);
+            color: var(--pink-rose);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--green-dark);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--pink-rose);
+            margin: 8px auto 0;
+        }
+
+        /* SPEISEKARTE PREVIEW */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .menu-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--pink-rose);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .menu-card h3 {
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: var(--pink-rose);
+            font-weight: bold;
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* RESERVIERUNG FORM */
+        .reservation-section {
+            background-color: var(--green-dark);
+            color: var(--text-light);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .reservation-section .section-title {
+            color: var(--pink-rose);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--pink-light);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #3d5442;
+            background-color: #1a271d;
+            color: var(--white);
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--pink-rose);
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        /* FOOTER & SOCIAL */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background-color: var(--bg-cream);
+            color: var(--green-dark);
+            border-top: 1px solid var(--pink-light);
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: var(--green-dark);
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid var(--pink-rose);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / HERO -->
+    <header>
+        <h1>TAQUERIA</h1>
+        <p>by Unterfreunden Hamburg</p>
+        <div class="hero-buttons">
+            <a href="#speisekarte" class="btn btn-outline">Speisekarte</a>
+            <a href="#reservierung" class="btn btn-pink">Tisch reservieren</a>
+        </div>
+    </header>
+
+    <!-- UBER EATS BANNER -->
+    <div class="ubereats-banner">
+        <span class="ubereats-badge">Demnächst</span>
+        <span>🌮 Bald auch über <strong>Uber Eats</strong> verfügbar!</span>
+    </div>
+
+    <div class="container">
+        
+        <!-- SPEISEKARTE (AUSZUG) -->
+        <section id="speisekarte">
+            <h2 class="section-title">Auszug aus der Karte</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <h3>Taco Trio <span class="price">16.00 €</span></h3>
+                    <p>Drei Tacos nach Wahl mit frischem Koriander, Guacamole und hausgemachten Salsas.</p>
+                </div>
+                <div class="menu-card">
+                    <h3>Quesadilla Birria <span class="price">7.50 €</span></h3>
+                    <p>Zart geschmortes Beef mit geschmolzenem Käse und Birria-Dip.</p>
+                </div>
+                <div class="menu-card">
+                    <h3>Classic Margarita <span class="price">11.00 €</span></h3>
+                    <p>Tequila, Frischer Limettensaft, Cointreau & Salzrand.</p>
+                </div>
+                <div class="menu-card">
+                    <h3>Vegane Tacos <span class="price">6.50 €</span></h3>
+                    <p>Vegane Steakstreifen, Guacamole, grüner Apfel, Röstzwiebeln & Tomatensalsa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESERVIERUNG -->
+        <section id="reservierung" class="reservation-section">
+            <h2 class="section-title">Tisch Anfragen</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--pink-light);">
+                Sende uns deine Reservierungsanfrage direkt zu. Wir bestätigen dir den Tisch per E-Mail.
+            </p>
+
+            <!-- FORMULAR (Web3Forms Integration) -->
+            <action="https://api.web3forms.com/submit" method="POST">
+                
+                <!-- HIER DEINEN WEB3FORMS ACCESS KEY EINTRAGEN -->
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                <input type="hidden" name="subject" value="Neue Tischreservierung - Taqueria">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="Name" required placeholder="Vor- und Nachname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail Adresse *</label>
+                        <input type="email" id="email" name="Email" required placeholder="name@beispiel.de">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Datum *</label>
+                        <input type="date" id="date" name="Datum" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Uhrzeit *</label>
+                        <input type="time" id="time" name="Uhrzeit" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Anzahl der Personen *</label>
+                    <select id="guests" name="Personen" required>
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 Personen</option>
+                        <option value="3">3 Personen</option>
+                        <option value="4">4 Personen</option>
+                        <option value="5+">5+ Personen (Gruppe)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Anmerkungen (z. B. Allergien, Veggie-Wünsche)</label>
+                    <textarea id="message" name="Anmerkungen" rows="3" placeholder="Optional..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-pink btn-submit">Reservierung absenden</button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Taqueria by Unterfreunden Hamburg</strong></p>
+        <p>Tacos • Margaritas • Good Vibes</p>
+        <a href="https://www.instagram.com/taqueria_byunterfreunden_hh" target="_blank" class="social-link">
+            Folge uns auf Instagram @taqueria_byunterfreunden_hh
+        </a>
+    </footer>
+
+</body>
+</html>
